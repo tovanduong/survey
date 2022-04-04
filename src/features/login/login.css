@@ -1,0 +1,16 @@
+.MuiFormControl-root {
+    width: 100% !important;
+    margin-bottom: 40px !important;
+    margin-top: 40px !important;
+}
+
+.MuiInputLabel-root {
+    font-size: 2rem !important;
+}
+
+.MuiInput-input {
+    padding: 20px 0 5px !important;
+}
+.MuiTouchRipple-root  {
+    position: static !important;
+}
