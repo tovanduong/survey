@@ -11,7 +11,7 @@ export function postSignUp({ email, password, username }) {
     })
         .then(res => {
             swal(swal({
-                title: "Login Success!",
+                title: "Sign Up Success!",
                 icon: "success",
             }))
             return res

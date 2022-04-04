@@ -9,11 +9,8 @@ import { tokenExpried } from './login/refreshToken'
 import Login from './login/signIn'
 import SignUp from './signUp/signUp'
 import SurveyContainer from './survey/surveyContainer'
-<<<<<<< HEAD
 import { total } from './survey/surveySlice'
-=======
 import { fetchGetSurvey } from './survey/surveySlice'
->>>>>>> 6aae2cbaea81772f6f29336accfb9675a845ef67
 import Total from './survey/totalScore'
 
 const Main = () => {
@@ -47,7 +44,6 @@ const Main = () => {
         }
     }, [result])
     return (
-<<<<<<< HEAD
         <Box>
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -57,18 +53,6 @@ const Main = () => {
                 <Route exacth path="/survey/total" element={<Total />} />
             </Routes>
         </Box>
-=======
-        <>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route exacth path="/signup" element={<SignUp />} />
-                    <Route exacth path="/survey" element={<SurveyContainer />} />
-                    <Route exacth path="/survey/total" element={<Total />} />
-                </Routes>
-            </BrowserRouter>
-        </>
->>>>>>> 6aae2cbaea81772f6f29336accfb9675a845ef67
     )
 }
 

@@ -35,7 +35,6 @@ export const surveySlice = createSlice({
   reducers: {
     total: (state, action) => {
       state.totalScore = action.payload
-<<<<<<< HEAD
     },
 
     resetSurvey: (state) => {
@@ -47,10 +46,7 @@ export const surveySlice = createSlice({
     }
   },
 
-=======
-    }
-  },
->>>>>>> 6aae2cbaea81772f6f29336accfb9675a845ef67
+
   extraReducers: {
     [fetchGetSurvey.pending]: (state) => {
       state.status = 'loading';
@@ -83,11 +79,6 @@ export const surveySlice = createSlice({
   },
 });
 
-<<<<<<< HEAD
 export const { total, resetSurvey } = surveySlice.actions;
-=======
-export const { total } = surveySlice.actions;
->>>>>>> 6aae2cbaea81772f6f29336accfb9675a845ef67
-
 
 export default surveySlice.reducer;
