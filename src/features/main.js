@@ -3,7 +3,9 @@ import { Box } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Route, Routes, useNavigate } from 'react-router-dom'
+import Header from '../component/header'
 import Home from '../component/home'
+import Dashboard from './admin/admin'
 import { fetchRefreshToken } from './login/loginSlice'
 import { tokenExpried } from './login/refreshToken'
 import Login from './login/signIn'
@@ -45,12 +47,14 @@ const Main = () => {
     }, [result])
     return (
         <Box>
+            <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route exacth path="/signup" element={<SignUp />} />
                 <Route exacth path="/survey" element={<SurveyContainer surveyProps={survey} />} />
                 <Route exacth path="/survey/total" element={<Total />} />
+                <Route exacth path="/admin/*" element={<Dashboard />} />
             </Routes>
         </Box>
     )

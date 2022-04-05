@@ -4,7 +4,7 @@ import { Box, ButtonBase } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { fecthLogout } from '../features/login/loginSlice'
 import { resetSurvey } from '../features/survey/surveySlice'
 
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
         top: '0px',
         left: '0px',
         right: '0px',
-        backgroundColor: 'rgba(200, 200, 200, 0.5)',
+        backgroundColor: 'rgba(0, 200, 200)',
         padding: '0 40px',
         zIndex: '999'
     },
@@ -40,6 +40,7 @@ const useStyles = makeStyles({
 
 
 const Header = () => {
+    let { userId } = useParams();
     const isLogin = useSelector((state) => state.login.isLogin)
     const dispatch = useDispatch()
     const classes = useStyles()
@@ -64,7 +65,7 @@ const Header = () => {
     return (
         <Box component='header' className={classes.root}>
             <Box className={classes.itemContainer}>
-                <img src='./assets/image/logo.png' alt='logo' />
+                <img src='/assets/image/logo.png' alt='logo' />
                 <ButtonBase onClick={handleClick} className={classes.itemsLink} >{isLogin ? 'Log Out' : 'Log In'}</ButtonBase>
             </Box>
         </Box>

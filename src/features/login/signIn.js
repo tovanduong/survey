@@ -29,7 +29,12 @@ const Login = () => {
   useEffect(() => {
     const accesstoken = JSON.parse(localStorage.getItem('accesstoken'))
     if (Object.values(data).length !== 0 || accesstoken) {
-      navigate('/survey')
+      if (data.user.role == 'user') {
+        navigate('/survey')
+      }
+      if (data.user.role == 'admin') {
+        navigate('/admin')
+      }
     }
   }, [data])
 
