@@ -19,14 +19,14 @@ export const fetchGetSurvey = createAsyncThunk(
 );
 
 
-export const fetchSubmitAnswer = createAsyncThunk(
-  "survey/postSubmitAnswer",
-  async (payload) => {
-    const response = await postSubmitAnswer(payload)
-    console.log(response)
-    return response
-  }
-);
+// export const fetchSubmitAnswer = createAsyncThunk(
+//   "survey/postSubmitAnswer",
+//   async (payload) => {
+//     const response = await postSubmitAnswer(payload)
+//     console.log(response)
+//     return response
+//   }
+// );
 
 export const surveySlice = createSlice({
   name: 'survey',
@@ -62,20 +62,20 @@ export const surveySlice = createSlice({
       state.errorMessage = action.payload;
     },
 
-    [fetchSubmitAnswer.pending]: (state) => {
-      state.status = 'loading';
-    },
+    // [fetchSubmitAnswer.pending]: (state) => {
+    //   state.status = 'loading';
+    // },
 
-    [fetchSubmitAnswer.fulfilled]: (state, action) => {
-      console.log(action.payload)
-      state.status = 'success';
-      state.result.push(action.payload);
-    },
+    // [fetchSubmitAnswer.fulfilled]: (state, action) => {
+    //   console.log(action.payload)
+    //   state.status = 'success';
+    //   state.result.push(action.payload);
+    // },
 
-    [fetchSubmitAnswer.rejected]: (state, action) => {
-      state.status = 'fail';
-      state.errorMessage = action.payload;
-    },
+    // [fetchSubmitAnswer.rejected]: (state, action) => {
+    //   state.status = 'fail';
+    //   state.errorMessage = action.payload;
+    // },
   },
 });
 

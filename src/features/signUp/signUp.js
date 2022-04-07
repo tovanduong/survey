@@ -18,13 +18,9 @@ const SignupSchema = Yup.object().shape({
         .min(6, 'Too Short!')
         .max(20, 'Too Long!')
         .required('Required'),
-    email: Yup.string()
-        .email('Invalid email')
-        .required('Required'),
 });
 
 const SignUp = () => {
-    // let navigate = useNavigate();
     const dispatch = useDispatch()
     const classes = useStyles()
     return (
@@ -32,7 +28,6 @@ const SignUp = () => {
             <Box className={classes.root}>
                 <Formik
                     initialValues={{
-                        email: '',
                         username: '',
                         password: '',
                     }}
@@ -40,7 +35,6 @@ const SignUp = () => {
                     onSubmit={value => {
                         console.log(value)
                         dispatch(fetcPostSingUp(value))
-                        // navigate('/')
                     }
                     }
                 >
@@ -52,14 +46,6 @@ const SignUp = () => {
                                     <Link to="/login" className={classes.btnToggle}>Have an Account?<br /> Sign in</Link>
                                 </Box>
                                 <Box component='h1' className={classes.loginTitle}>SIGN UP</Box>
-                                <FastField
-                                    name="email"
-                                    component={InputField}
-
-                                    type='text'
-                                    label="Enter your email"
-                                    placeholder="DuongTV10@gmail.com"
-                                />
                                 <FastField
                                     name="username"
                                     component={InputField}

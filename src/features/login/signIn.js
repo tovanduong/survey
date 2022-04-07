@@ -27,12 +27,11 @@ const Login = () => {
   let navigate = useNavigate()
   const dispatch = useDispatch()
   useEffect(() => {
-    const accesstoken = JSON.parse(localStorage.getItem('accesstoken'))
-    if (Object.values(data).length !== 0 || accesstoken) {
-      if (data.user.role == 'user') {
+    if (Object.values(data).length !== 0) {
+      if (data.role == 'user') {
         navigate('/survey')
       }
-      if (data.user.role == 'admin') {
+      if (data.role == 'admin') {
         navigate('/admin')
       }
     }

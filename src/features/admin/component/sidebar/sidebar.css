@@ -2,9 +2,7 @@
 .sidebar {
     display: flex;
     justify-content: space-between;
-    /* padding: 40px; */
-    border: 1px solid gray;
-    border-radius: 8px;
+    /* border: 1px solid gray; */
     height: 100%;
     overflow: hidden;
     position: fixed;
@@ -23,12 +21,12 @@
     color: #FFF;
     padding: 10px 10px 10px;
     font-size: 24px;
-
 }
 
 .sidebar-right {
     width: calc(100% - 256px);
-    background-color: #eaeff1;
+    /* background-color: #eaeff1; */
+    border-radius: 8px;
     padding: 10px;
     color: black;
     font-size: 24px;

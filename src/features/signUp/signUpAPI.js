@@ -4,7 +4,7 @@ import axiosClient from "../../common/API/axiosClient";
 
 
 export function postSignUp({ email, password, username }) {
-    return axiosClient.post('v1/auth/register', {
+    return axiosClient.post('auth/register', {
         email,
         password,
         username
@@ -16,8 +16,5 @@ export function postSignUp({ email, password, username }) {
             }))
             return res
         })
-        .catch(err => swal({
-            title: err.response.data.message,
-            icon: 'error'
-        }))
+        .catch(err => err)
 }

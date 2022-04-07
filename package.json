@@ -5,9 +5,13 @@
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.6.0",
     "@mui/material": "^5.5.3",
     "@mui/styled-engine-sc": "^5.5.2",
     "@mui/styles": "^5.5.3",
+    "@mui/x-data-grid": "^5.8.0",
+    "@mui/x-data-grid-generator": "^5.8.0",
+    "@mui/x-data-grid-pro": "^5.8.0",
     "@reduxjs/toolkit": "^1.8.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -21,6 +25,7 @@
     "ra-data-json-server": "^3.19.10",
     "react": "^18.0.0",
     "react-admin": "^3.19.10",
+    "react-data-grid": "^7.0.0-beta.11",
     "react-dom": "^18.0.0",
     "react-firebaseui": "^6.0.0",
     "react-redux": "^7.2.6",
@@ -29,6 +34,7 @@
     "styled-components": "^5.3.5",
     "sweetalert": "^2.1.2",
     "swiper": "^8.0.7",
+    "uuid": "^8.3.2",
     "yup": "^0.32.11"
   },
   "scripts": {

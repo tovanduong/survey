@@ -2,13 +2,13 @@
 import { FormControl, FormHelperText, Input, InputLabel } from '@mui/material';
 import React from "react";
 
-const InputField = (props) => {
+const FieldInput = (props) => {
 
     const { field, type, placeholder, label, form } = props;
     const { errors, touched } = form
     const { name } = field;
     const showError = errors[name] && touched[name]
-    console.log(field)
+
     // const classes = useStyles()
     return (
         <>
@@ -22,4 +22,4 @@ const InputField = (props) => {
     );
 };
 
-export default InputField;
+export default FieldInput;

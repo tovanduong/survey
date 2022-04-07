@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { postLogin, postLogout, postRefreshtoken } from './loginAPI'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { postLogin, postLogout } from './loginAPI';
 
 const initialState = {
   value: 0,
@@ -16,18 +16,12 @@ export const fetchLogin = createAsyncThunk(
     return response
   }
 );
-export const fetchRefreshToken = createAsyncThunk(
-  "users/postRefeshToken",
-  async (payload) => {
-    const response = await postRefreshtoken(payload)
-    return response
-  }
-);
+
 
 export const fecthLogout = createAsyncThunk(
   "users/postLogout",
-  async (payload) => {
-    const response = await postLogout(payload)
+  async () => {
+    const response = await postLogout()
 
     return response
   }
@@ -36,14 +30,12 @@ export const fecthLogout = createAsyncThunk(
 export const loginSilce = createSlice({
   name: 'login',
   initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
   extraReducers: {
     [fetchLogin.pending]: (state) => {
       state.status = 'loading';
     },
 
     [fetchLogin.fulfilled]: (state, action) => {
-      console.log(action)
       state.status = 'Log in success';
       state.data = action.payload;
       state.isLogin = true;
@@ -61,8 +53,5 @@ export const loginSilce = createSlice({
     },
   },
 });
-
-// export const { } = loginSilce.actions;
-
 
 export default loginSilce.reducer;

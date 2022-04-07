@@ -21,7 +21,6 @@ export const fetcPostSingUp = createAsyncThunk(
 export const signUpSlice = createSlice({
   name: 'login',
   initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
   extraReducers: {
     [fetcPostSingUp.pending]: (state) => {
       state.status = 'loading';
@@ -39,8 +38,5 @@ export const signUpSlice = createSlice({
     },
   },
 });
-
-// export const { } = signUpSlice.actions;
-
 
 export default signUpSlice.reducer;
