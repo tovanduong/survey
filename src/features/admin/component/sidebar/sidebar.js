@@ -7,7 +7,7 @@ import {
 import { Box } from "@mui/material";
 import { Button, Divider, Menu, Switch } from "antd";
 import "antd/dist/antd.css";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { NavLink, Route, Routes } from "react-router-dom";
 import Category from "../../category/category";
 import Difficult from "../../difficult/difficult";
@@ -21,7 +21,7 @@ const Sidebar = () => {
     const [collapsed, setCollapsed] = useState(false);
     const [mode, setMode] = useState("inline");
     const [theme, setTheme] = useState("dark");
-
+    const [current, setCurrent] = useState(1)
     const changeMode = (value) => {
         setMode(value ? "vertical" : "inline");
     };
@@ -29,34 +29,23 @@ const Sidebar = () => {
     const changeTheme = (value) => {
         setTheme(value ? "light" : "dark");
     };
-
     const toggleCollapsed = () => {
         setCollapsed(!collapsed);
     };
+    const nodeRef = React.useRef(null);
     const { SubMenu } = Menu;
     return (
         <Box className="sidebar">
-            <Box style={{ width: 256 }} className="sidebar-left">
+            <Box ref={nodeRef} style={{ width: 256 }} className="sidebar-left">
                 <Switch onChange={changeMode} /> Change Mode
                 <Divider type="vertical" />
                 <Switch onChange={changeTheme} /> Change Style
                 <br />
                 <br />
-                <Button
-                    type="primary"
-                    onClick={toggleCollapsed}
-                    style={{ marginBottom: 16 }}
-                >
-                    {React.createElement(
-                        collapsed ? MenuUnfoldOutlined : MenuFoldOutlined
-                    )}
-                </Button>
+
                 <Menu
-                    defaultSelectedKeys={["1"]}
-                    defaultOpenKeys={["sub1"]}
                     mode={mode}
                     theme={theme}
-                    inlineCollapsed={collapsed}
                 >
                     <SubMenu key="sub1" icon={<CarryOutOutlined />} title="Category">
                         <Menu.Item key="1">

@@ -27,6 +27,7 @@ const Login = () => {
   let navigate = useNavigate()
   const dispatch = useDispatch()
   useEffect(() => {
+    localStorage.setItem('datauser', JSON.stringify(data))
     if (Object.values(data).length !== 0) {
       if (data.role == 'user') {
         navigate('/survey')

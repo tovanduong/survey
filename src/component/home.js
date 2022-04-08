@@ -1,9 +1,10 @@
 
-
-
-import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react'
 import { makeStyles } from '@mui/styles';
 import { Box } from '@mui/system';
+import { Cookie } from '@mui/icons-material';
 
 const useStyles = makeStyles({
     root: {
@@ -17,6 +18,27 @@ const useStyles = makeStyles({
 })
 const Home = () => {
     const classes = useStyles()
+    const { data } = useSelector((state) => state.login.data)
+    let navigate = useNavigate()
+    console.log(data)
+
+    useEffect(() => {
+        const isLogin = JSON.parse(localStorage.getItem('datauser'))
+        console.log(isLogin)
+        if (isLogin === null) {
+            navigate('/')
+            return
+        }
+        if (isLogin.role == 'user') {
+            navigate('/survey')
+            return
+        }
+        if (isLogin.role == 'admin') {
+            navigate('/admin')
+            return
+        }
+    }, [])
+
     return (
         <Box className={classes.root}></Box>
     )

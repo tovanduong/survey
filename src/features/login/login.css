@@ -1,6 +1,6 @@
-.MuiFormControl-root {
-    width: 100% !important;
-}
+/* .MuiFormControl-root {
+   
+} */
 
 .MuiInputLabel-root {
     font-size: 2rem !important;
@@ -14,6 +14,7 @@
 }
 
 .inputAuth{
+    width: 100% !important;
     margin-bottom: 30px !important;
     margin-top: 30px !important;
 }

@@ -1,8 +1,7 @@
-
 import { FormControl, FormHelperText, Input, InputLabel } from '@mui/material';
 import React from "react";
 
-const InputField = (props) => {
+const InputFieldCategory = (props) => {
 
     const { field, type, placeholder, label, form } = props;
     const { errors, touched } = form
@@ -11,9 +10,9 @@ const InputField = (props) => {
     // const classes = useStyles()
     return (
         <>
-            <FormControl className='inputAuth'>
+            <FormControl className='inputCate'>
                 {label && <InputLabel htmlFor={name} >{label}</InputLabel>}
-                <Input {...field} name={name} placeholder={placeholder} type={type} autoComplete="off" />
+                <Input  {...field} name={name} placeholder={placeholder} type={type} autoComplete="off" autoFocus={true} />
                 {showError ? <FormHelperText error={true}>{errors[name]}</FormHelperText> : null}
             </FormControl><br />
 
@@ -21,4 +20,4 @@ const InputField = (props) => {
     );
 };
 
-export default InputField;
+export default InputFieldCategory;

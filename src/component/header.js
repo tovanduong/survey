@@ -3,7 +3,7 @@
 import { Box, ButtonBase } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { fecthLogout } from '../features/login/loginSlice'
 import { resetSurvey } from '../features/survey/surveySlice'
@@ -41,19 +41,18 @@ const useStyles = makeStyles({
 
 const Header = () => {
 
-    const isLogin = useSelector((state) => state.login.isLogin)
-    const isLogout = localStorage.getItem('accesstoken')
+    const isLogin = localStorage.getItem('datauser')
+    // const isLogout = localStorage.getItem('accesstoken')
     const dispatch = useDispatch()
     const classes = useStyles()
     let navigate = useNavigate()
-
     const handleClick = () => {
-        if (isLogin === false) {
+        if (isLogin === null) {
             navigate('/login')
         }
 
-        if (isLogin === true) {
-            localStorage.removeItem('accesstoken')
+        if (isLogin !== null) {
+            localStorage.removeItem('datauser')
             dispatch(fecthLogout())
             dispatch(resetSurvey())
             navigate('/')
@@ -65,7 +64,7 @@ const Header = () => {
         <Box component='header' className={classes.root}>
             <Box className={classes.itemContainer}>
                 <img src='/assets/image/logo.png' alt='logo' />
-                <ButtonBase onClick={handleClick} className={classes.itemsLink} >{isLogout == null ? 'Log In' : 'Log Out'}</ButtonBase>
+                <ButtonBase onClick={handleClick} className={classes.itemsLink} >{isLogin == null ? 'Log In' : 'Log Out'}</ButtonBase>
             </Box>
         </Box>
     )

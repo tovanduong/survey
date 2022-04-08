@@ -2,14 +2,14 @@
 import { Button } from '@mui/material'
 import { FastField, Form } from 'formik'
 import React from 'react'
-import FieldInput from '../component/fieldInput/filedInput'
+import InputFieldUser from './InputField'
 
 const FormPostUser = () => {
     return (
         <Form >
             <FastField
                 name="username"
-                component={FieldInput}
+                component={InputFieldUser}
 
                 type='text'
                 label="User Name"
@@ -17,7 +17,7 @@ const FormPostUser = () => {
             />
             <FastField
                 name="password"
-                component={FieldInput}
+                component={InputFieldUser}
 
                 type='password'
                 label="Password"
