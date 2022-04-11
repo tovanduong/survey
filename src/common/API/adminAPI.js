@@ -102,3 +102,47 @@ export function EditDiff(id, { value }) {
         .catch((err) => err
         );
 }
+
+export function postAnswer({ dataAnswer }) {
+
+    return axiosClient.post('/answer',{
+        name: dataAnswer.name,
+        isAnswer: dataAnswer.isAnswer
+    }
+    )
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => err
+        );
+}
+
+export function getAnswer() {
+    return axiosClient.get('/answer')
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => err
+        );
+}
+
+export function delAnswer(id) {
+    return axiosClient.delete(`/answer/${id}`)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => err
+        );
+}
+
+export function EditAnswer(id, { dataAnswer }) {
+    return axiosClient.patch(`/answer/${id}`, {
+        name: dataAnswer.name,
+        isAnswer: dataAnswer.isAnswer
+    })
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => err
+        );
+}

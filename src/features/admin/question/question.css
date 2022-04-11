@@ -1,0 +1,22 @@
+.textInputQuestion label{
+    font-size: 24px !important;
+}
+
+.textInputQuestion {
+    width: 50% !important;
+}
+
+.textInputQuestion input{
+    height: 30px !important;
+
+    /* margin-bottom: 20px !important; */
+}
+
+.FormInput {
+    margin-top: 20px !important;
+    width: 50%;
+}
+.FormInput label::before {
+    font-size: 18px !important;
+
+}

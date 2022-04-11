@@ -64,11 +64,11 @@ const Sidebar = () => {
                     </SubMenu>
                     <SubMenu key="sub4" icon={<QuestionCircleOutlined />} title="Question">
                         <Menu.Item key="4">
-                            <NavLink to="/admin/question">Create Question</NavLink>
+                            <NavLink to="/admin/question">Question</NavLink>
                         </Menu.Item>
                     </SubMenu>
-                    <SubMenu key="sub5" icon={<UserOutlined />} title="User">
-                        <Menu.Item key="5">
+                    <SubMenu key="sub6" icon={<UserOutlined />} title="User">
+                        <Menu.Item key="6">
                             <NavLink to="/admin/user">List User</NavLink>
                         </Menu.Item>
                     </SubMenu>

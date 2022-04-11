@@ -20,11 +20,9 @@ const Home = () => {
     const classes = useStyles()
     const { data } = useSelector((state) => state.login.data)
     let navigate = useNavigate()
-    console.log(data)
 
     useEffect(() => {
         const isLogin = JSON.parse(localStorage.getItem('datauser'))
-        console.log(isLogin)
         if (isLogin === null) {
             navigate('/')
             return

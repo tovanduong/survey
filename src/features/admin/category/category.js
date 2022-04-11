@@ -1,15 +1,14 @@
 
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import { Box, Button, Modal, Typography } from '@mui/material';
-import { DataGrid, useGridApiRef } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import { Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { delCategory, EditCategory, getCategory, postCategory } from '../../../common/API/adminAPI';
 import './category.css';
 import FormPostCate from './formPostCate';
-import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 
 const SignupSchema = Yup.object().shape({
     name: Yup.string()
