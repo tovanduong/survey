@@ -12,7 +12,9 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import Category from "../../category/category";
 import Difficult from "../../difficult/difficult";
 import Question from "../../question/question";
+import QuestionList from "../../question/questionList";
 import Survey from "../../survey/survey";
+import SurveyList from "../../survey/surveylist";
 import User from "../../user/user";
 import Topbar from "../topbar/topbar";
 import "./sidebar.css";
@@ -61,10 +63,16 @@ const Sidebar = () => {
                         <Menu.Item key="3">
                             <NavLink to="/admin/survey">Create Survey</NavLink>
                         </Menu.Item>
+                        <Menu.Item key="7">
+                            <NavLink to="/admin/survey/list">List Survey</NavLink>
+                        </Menu.Item>
                     </SubMenu>
                     <SubMenu key="sub4" icon={<QuestionCircleOutlined />} title="Question">
                         <Menu.Item key="4">
                             <NavLink to="/admin/question">Question</NavLink>
+                        </Menu.Item>
+                        <Menu.Item key="5">
+                            <NavLink to="/admin/question/list">List Question</NavLink>
                         </Menu.Item>
                     </SubMenu>
                     <SubMenu key="sub6" icon={<UserOutlined />} title="User">
@@ -78,7 +86,9 @@ const Sidebar = () => {
                 <Topbar />
                 <Routes>
                     <Route path="survey" element={<Survey />} />
+                    <Route path="survey/list" element={<SurveyList />} />
                     <Route path="question" element={<Question />} />
+                    <Route path="question/list" element={<QuestionList />} />
                     <Route path="category" element={<Category />} />
                     <Route path="difficult" element={<Difficult />} />
                     <Route path="user" element={<User />} />

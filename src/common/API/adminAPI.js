@@ -103,11 +103,14 @@ export function EditDiff(id, { value }) {
         );
 }
 
-export function postAnswer({ dataAnswer }) {
 
-    return axiosClient.post('/answer',{
-        name: dataAnswer.name,
-        isAnswer: dataAnswer.isAnswer
+
+export function postQuestion(data) {
+    return axiosClient.post('/question', {
+        name: data.name,
+        category: data.category,
+        difficulty: data.difficult,
+        answers: data.answer
     }
     )
         .then((res) => {
@@ -117,8 +120,9 @@ export function postAnswer({ dataAnswer }) {
         );
 }
 
-export function getAnswer() {
-    return axiosClient.get('/answer')
+
+export function getQuestion() {
+    return axiosClient.get('/question')
         .then((res) => {
             return res.data;
         })
@@ -126,8 +130,9 @@ export function getAnswer() {
         );
 }
 
-export function delAnswer(id) {
-    return axiosClient.delete(`/answer/${id}`)
+
+export function getIdQuestion(id) {
+    return axiosClient.get(`/question/${id}`)
         .then((res) => {
             return res.data;
         })
@@ -135,10 +140,67 @@ export function delAnswer(id) {
         );
 }
 
-export function EditAnswer(id, { dataAnswer }) {
-    return axiosClient.patch(`/answer/${id}`, {
-        name: dataAnswer.name,
-        isAnswer: dataAnswer.isAnswer
+
+export function delQuestion(id) {
+    return axiosClient.delete(`/question/${id}`)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => err
+        );
+}
+
+export function EditQuestion(id, { value }) {
+    return axiosClient.patch(`/question/${id}`, {
+        name: value.name
+    })
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => err
+        );
+}
+
+
+
+export function postSurvey(data) {
+    console.log(data)
+    return axiosClient.post('/survey', {
+        name: data.name,
+        category: data.category,
+        difficulty: data.difficulty,
+        questions: data.questions
+    }
+    )
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => err
+        );
+}
+
+export function getSurvey() {
+    return axiosClient.get('/survey')
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => err
+        );
+}
+
+
+export function delSurvey(id) {
+    return axiosClient.delete(`/survey/${id}`)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => err
+        );
+}
+
+export function EditSurvey(id, { value }) {
+    return axiosClient.patch(`/survey/${id}`, {
+        name: value.name
     })
         .then((res) => {
             return res.data;

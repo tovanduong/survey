@@ -1,34 +1,32 @@
-import { FormControl, FormHelperText, Input, InputLabel } from "@mui/material";
-import Checkbox from "@mui/material/Checkbox";
-import React, { useState } from "react";
+import { Field } from "formik";
+import React from "react";
 
-const CheckBoxFieldQuestion = (props) => {
-  const { field, type, placeholder, label, form } = props;
-  const { errors, touched } = form;
-  const { name, onChange } = field;
-  const showError = errors[name] && touched[name];
-  console.log(field);
+const CheckBoxFieldAnswer = (props) => {
+  const { form } = props;
+  const { values } = form;
+
   return (
     <>
-      <FormControl className="FormInput">
-        {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
-        <Input
-          {...field}
-          name={name}
-          placeholder={placeholder}
-          type={type}
-          autoComplete="off"
-          autoFocus={true}
-          className="InputQuestion"
-        />
-        <Checkbox {...field} name="isAnswer" />
-        {showError ? (
-          <FormHelperText error={true}>{errors[name]}</FormHelperText>
-        ) : null}
-      </FormControl>
-      <br />
+      {values.answer.length > 0 &&
+        values.answer.map((answer, index) => (
+          <div key={index} className='answerForm'>
+            <label htmlFor={`answer.${index}.name`}>Answer: </label>
+            <Field
+              name={`answer.${index}.name`}
+              autoComplete="off"
+              className="InputQuestion"
+              type="text"
+            />
+            <Field
+              name={`answer.${index}.isAnswer`}
+              className="CheckboxQuestion"
+              type="checkbox"
+            />
+          </div>
+        ))}
+
     </>
   );
 };
 
-export default CheckBoxFieldQuestion;
+export default CheckBoxFieldAnswer;

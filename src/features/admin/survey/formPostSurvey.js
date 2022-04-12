@@ -3,52 +3,46 @@ import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import { Field, FieldArray, Form, useField } from "formik";
 import React from "react";
-import CheckBoxFieldQuestion from "./InputField/checkboxFieldQuestion";
-import InputFieldQuestion from "./InputField/InputFieldQuestion";
-import SelectFieldQuestion from "./InputField/SelectFieldQuestion";
+import InputFieldSurvey from "./InputField/InputFieldSurvey";
+import SelectFieldSurvey from "./InputField/SelectFieldSurvey";
 
-const FormPostQuestion = ({ propsCate, propsDiff, propPara }) => {
+const FormPostSurvey = ({ propsCate, propsDiff, propsQuestion }) => {
   return (
     <Form >
       <Box style={{ display: 'flex', width: '100% !important' }}>
         <Box width={'100%'}>
           <Field
             name="category"
-            component={SelectFieldQuestion}
+            component={SelectFieldSurvey}
             type="text"
             Aprops={propsCate}
-            Bprops={propPara}
-            multiple={true}
+            multiple={false}
             label="Category"
-
           />
           <Field
-            name="difficult"
-            component={SelectFieldQuestion}
+            name="difficulty"
+            component={SelectFieldSurvey}
             type="text"
             Aprops={propsDiff}
-            Bprops={propPara}
             multiple={false}
-            label="Difficult"
+            label="Difficulty"
           />
-
+          <Field
+            name="questions"
+            component={SelectFieldSurvey}
+            type="text"
+            Aprops={propsQuestion}
+            multiple={true}
+            label="Question"
+          />
           <Field
             name="name"
-            component={InputFieldQuestion}
-            Bprops={propPara}
+            component={InputFieldSurvey}
             type="text"
-            label="Question"
-
+            label="Survey"
           />
         </Box>
-        <Box width={'100%'}>
-          <FieldArray
-            name="answer"
-            component={CheckBoxFieldQuestion}
-            Bprops={propPara}
 
-          />
-        </Box>
       </Box>
       <Button
         style={{ width: "100px", height: "50px", marginTop: "20px" }}
@@ -60,4 +54,4 @@ const FormPostQuestion = ({ propsCate, propsDiff, propPara }) => {
   );
 };
 
-export default FormPostQuestion;
+export default FormPostSurvey;

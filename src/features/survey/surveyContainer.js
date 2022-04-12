@@ -1,30 +1,28 @@
 
 import { Box } from '@mui/material';
-import { React, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { Navigation } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Swiper, SwiperSlide } from "swiper/react";
-import Survey from './survey';
-import "./survey.css";
-import { fetchGetSurvey, total } from './surveySlice';
+import ListCate from './component/listCate';
 
 
-const SurveyContainer = ({ surveyProps }) => {
+import { fetchGetCategory, fetchGetSurvey } from './surveySlice';
 
+
+const SurveyContainer = () => {
+    const dispatch = useDispatch()
+    const { category, survey } = useSelector((state) => state.survey)
+    useEffect(() => {
+        dispatch(fetchGetSurvey())
+
+    }, [])
+    useEffect(() => {
+        dispatch(fetchGetCategory())
+    }, [])
+
+    console.log(category)
     return (
         <Box paddingTop={20}>
-            {/* <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-                {survey && survey.map((el, index) => {
-
-                    return (
-                        <SwiperSlide key={index}><Survey questionProps={el} /></SwiperSlide>
-                    )
-                })}
-            </Swiper> */}
-            hello
+            <ListCate categoryProps={category} surveyProps={survey} />
         </Box>
     )
 }

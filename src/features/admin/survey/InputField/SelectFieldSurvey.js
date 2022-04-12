@@ -1,16 +1,14 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { fieldToTextField } from "formik-material-ui";
-import React, { useEffect } from "react";
-import { getIdQuestion } from "../../../../common/API/adminAPI";
+import React from "react";
 
-const SelectFieldQuestion = (props) => {
-  const { Aprops, multiple, label, Bprops } = props;
+const SelectFieldSurvey = (props) => {
+  const { Aprops, multiple, label } = props;
   const {
     form: { setFieldValue },
   } = props;
   const { error, helperText, ...field } = fieldToTextField(props);
   const { name } = field;
-
   return (
     <>
       <Autocomplete
@@ -23,10 +21,9 @@ const SelectFieldQuestion = (props) => {
         onChange={(_, value) => setFieldValue(name, value)}
         filterSelectedOptions
         renderInput={(params) => <TextField {...params} label={label} />}
-      // defaultValue={}
       />
     </>
   );
 };
 
-export default SelectFieldQuestion;
+export default SelectFieldSurvey;

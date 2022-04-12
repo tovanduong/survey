@@ -1,7 +1,7 @@
 import { FormControl, FormHelperText, Input, InputLabel } from "@mui/material";
 import React from "react";
 
-const InputFieldQuestion = (props) => {
+const InputFieldSurvey = (props) => {
   const { field, type, placeholder, label, form } = props;
   const { errors, touched } = form;
   const { name } = field;
@@ -17,7 +17,6 @@ const InputFieldQuestion = (props) => {
           placeholder={placeholder}
           type={type}
           autoComplete="off"
-          autoFocus={true}
           className="InputQuestion"
         />
         {showError ? (
@@ -29,4 +28,4 @@ const InputFieldQuestion = (props) => {
   );
 };
 
-export default InputFieldQuestion;
+export default InputFieldSurvey;
