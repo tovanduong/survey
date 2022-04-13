@@ -1,11 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getCate, getSurvey } from './surveyAPI';
+import { getCate, getSurvey, getSurveyOfCate, postAssignment } from './SurveyAPI/surveyAPI';
 
 const initialState = {
-
+  loading: false,
   errorMessage: '',
   survey: [],
-  category: []
+  category: [],
+  assignment: {},
+  surveyOfCate: []
 };
 
 export const fetchGetSurvey = createAsyncThunk(
@@ -23,6 +25,23 @@ export const fetchGetCategory = createAsyncThunk(
     return response
   }
 );
+
+export const fetchGetSurveyOfCate = createAsyncThunk(
+  "survey/getSurveyCate",
+  async (payload) => {
+    const response = await getSurveyOfCate(payload)
+    return response
+  }
+);
+
+export const fetchPostAssignment = createAsyncThunk(
+  "survey/postAssignment",
+  async (payload) => {
+    const response = await postAssignment(payload)
+    return response
+  }
+);
+
 
 export const surveySlice = createSlice({
   name: 'survey',
@@ -46,6 +65,16 @@ export const surveySlice = createSlice({
 
     [fetchGetCategory.fulfilled]: (state, action) => {
       state.category = action.payload;
+    },
+    [fetchPostAssignment.pending]: (state) => {
+      state.loading = true;
+    },
+    [fetchPostAssignment.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.assignment = action.payload;
+    },
+    [fetchGetSurveyOfCate.fulfilled]: (state, action) => {
+      state.surveyOfCate = action.payload;
     },
   },
 });

@@ -1,29 +1,17 @@
 
-import { Box } from '@mui/material';
-import { React, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import Assignment from './component/assignment';
+import { React } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import ListCate from './component/listCate';
-
-
-import { fetchGetCategory, fetchGetSurvey } from './surveySlice';
-
+import SurveyOfCate from './component/listSurvey';
 
 const SurveyContainer = () => {
-    const dispatch = useDispatch()
-    const { category, survey } = useSelector((state) => state.survey)
-    useEffect(() => {
-        dispatch(fetchGetSurvey())
-
-    }, [])
-    useEffect(() => {
-        dispatch(fetchGetCategory())
-    }, [])
-
-    console.log(category)
     return (
-        <Box paddingTop={20}>
-            <ListCate categoryProps={category} surveyProps={survey} />
-        </Box>
+        <Routes>
+            <Route index element={<ListCate />} />
+            <Route path="detail" element={<SurveyOfCate />} />
+            <Route path="assignment" element={<Assignment />} />
+        </Routes>
     )
 }
 

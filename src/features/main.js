@@ -18,7 +18,7 @@ const Main = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route exacth path="/signup" element={<SignUp />} />
-                <Route exacth path="/survey" element={<SurveyContainer />} />
+                <Route exacth path="/survey/*" element={<SurveyContainer />} />
                 <Route exacth path="/admin/*" element={<Dashboard />} />
             </Routes>
         </Box>
