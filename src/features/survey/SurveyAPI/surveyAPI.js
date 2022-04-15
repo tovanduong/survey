@@ -34,3 +34,16 @@ export function getSurveyOfCate(cate) {
         })
         .catch(err => console.log(err))
 }
+
+export function postSubmit(payload) {
+    console.log(payload)
+    return axiosClient.post(`/assignment/${payload.id}/submit`,
+        {
+            data: payload.data
+        }
+    )
+        .then(res => {
+            return res.data
+        })
+        .catch(err => console.log(err))
+}

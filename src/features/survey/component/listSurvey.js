@@ -14,15 +14,15 @@ const SurveyOfCate = () => {
     const { surveyOfCate } = useSelector(state => state.survey)
 
     const handleClick = (surveyId) => {
-        console.log(surveyId)
         dispatch(fetchPostAssignment(surveyId))
         navigate('/survey/assignment')
     }
+
     return (
         <Container>
             <Box display='flex' justifyContent='space-between' alignItems='center' paddingTop={20}>
                 {surveyOfCate && surveyOfCate.map((el) => {
-                    return <Card key={el.id} sx={{ width: "150px", height: '100px', border: '1px solid gray', }} onClick={() => handleClick(el.id)}>
+                    return <Card key={el.id} sx={{ width: "150px", height: '100px', border: '1px solid gray', cursor: 'pointer' }} onClick={() => handleClick(el.id)}>
                         <CardContent sx={{ width: '100%', padding: '0 !important', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} >
                             <Typography>
                                 {el.name}

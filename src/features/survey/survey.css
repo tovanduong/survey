@@ -38,3 +38,67 @@ border: 1px solid #CCC !important;
 border: 1px solid #CCC !important;
 margin-bottom: 10px !important;
 }
+
+.swiper-button-next, .swiper-button-prev {
+  width: 100px !important;
+  position: absolute;
+  top: 96% !important;
+  border: 1px solid gray;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  border-radius: 8px;
+  background-color: rgb(255, 239, 98) !important;
+}
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  background-color: rgba(255, 239, 98, 0.5) !important;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after{
+  font-family: none !important;
+  width: 100%;
+  font-size: 36px !important;
+}
+.active {
+  background-color: aqua;
+}
+
+.nameAnswer {
+  padding: 10px;
+  /* background-color: rgb(255, 228, 196); */
+  transition: all 0.25s ease-in;
+  border: 1px solid gray;
+  border-radius: 8px;
+  min-width: 300px;
+  width: 40% !important;
+  margin: 40px 40px !important;
+}
+
+.answerContainer {
+  width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+
+.nameAnswer:hover{
+  
+  /* background-color: rgba(255, 228, 196, 0.5); */
+  cursor: pointer;
+}
+
+.btn-assignment {
+  font-size: 18px !important;
+  padding: 10px  !important;
+  min-width: 100px  !important;
+}
+
+.btn-assignment:nth-child(even) {
+  margin-right: 80px;
+}
+.btn-assignment:first-child {
+  margin-right: 80px;
+}
+
+
+

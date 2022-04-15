@@ -33,13 +33,7 @@ const SurveyList = () => {
     useEffect(() => {
         getSurvey().then(dataSurvey => setSurvey(dataSurvey))
     }, [])
-    // const handleOpen = (params) => {
-    //     setOpen(true)
 
-    //     console.log(params)
-    //     setPara(params)
-    // };
-    // const handleClose = () => setOpen(false);
     const handleDel = (params) => {
         delSurvey(params.id)
         setTimeout(() => {

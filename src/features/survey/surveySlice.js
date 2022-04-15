@@ -1,18 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getCate, getSurvey, getSurveyOfCate, postAssignment } from './SurveyAPI/surveyAPI';
+import { getCate, getSurvey, getSurveyOfCate, postAssignment, postSubmit } from './SurveyAPI/surveyAPI';
 
 const initialState = {
   loading: false,
   errorMessage: '',
+  dataAssignment: [],
   survey: [],
   category: [],
   assignment: {},
-  surveyOfCate: []
+  surveyOfCate: [],
+  answerCorrect: [],
+  assignmentSubmit: []
 };
 
 export const fetchGetSurvey = createAsyncThunk(
   "survey/getSurvey",
-  async (payload) => {
+  async () => {
     const response = await getSurvey()
     return response
   }
@@ -20,7 +23,7 @@ export const fetchGetSurvey = createAsyncThunk(
 
 export const fetchGetCategory = createAsyncThunk(
   "survey/getCategory",
-  async (payload) => {
+  async () => {
     const response = await getCate()
     return response
   }
@@ -42,17 +45,32 @@ export const fetchPostAssignment = createAsyncThunk(
   }
 );
 
+export const fetchPostSubmit = createAsyncThunk(
+  "survey/submitAssignment",
+  async (payload) => {
+    const response = await postSubmit(payload)
+    return response
+  }
+);
+
 
 export const surveySlice = createSlice({
   name: 'survey',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
+    answer: (state, action) => {
+      state.answerCorrect.push(action.payload)
+    },
+    data: (state, action) => {
+      state.dataAssignment.push(action.payload)
+    },
     resetSurvey: (state) => {
-      state.survey = [];
-      state.result = [];
-      state.totalScore = 0;
-      state.errorMessage = ''
+      state.assignmentSubmit = [];
+      state.assignment = [];
+      state.dataAssignment = [];
+      state.category = [];
+      state.surveyOfCate = []
     }
   },
 
@@ -76,9 +94,12 @@ export const surveySlice = createSlice({
     [fetchGetSurveyOfCate.fulfilled]: (state, action) => {
       state.surveyOfCate = action.payload;
     },
+    [fetchPostSubmit.fulfilled]: (state, action) => {
+      state.assignmentSubmit = action.payload;
+    },
   },
 });
 
-export const { total, resetSurvey } = surveySlice.actions;
+export const { resetSurvey, answer, data } = surveySlice.actions;
 
 export default surveySlice.reducer;
