@@ -36,7 +36,6 @@ export function getSurveyOfCate(cate) {
 }
 
 export function postSubmit(payload) {
-    console.log(payload)
     return axiosClient.post(`/assignment/${payload.id}/submit`,
         {
             data: payload.data

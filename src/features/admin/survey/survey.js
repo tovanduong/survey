@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
-import { Form, Formik } from "formik";
+import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import * as Yup from "yup";
 import { getCategory, getDiff, getQuestion, getSurvey, postSurvey } from "../../../common/API/adminAPI";
 import FormPostSurvey from "./formPostSurvey";
 // import "./question.css";
@@ -57,7 +56,6 @@ const Survey = () => {
                         <FormPostSurvey propsCate={category} propsDiff={diff} propsQuestion={question} />
                     )}
                 </Formik>
-                {/* <Answer /> */}
             </Box>
         </div>
     );

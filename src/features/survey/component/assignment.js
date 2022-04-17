@@ -1,6 +1,5 @@
 
-import { Button, Container, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, Button, Container, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -16,6 +15,7 @@ import ListAnswer from './listAnswer';
 const Assignment = () => {
     const [end, setEnd] = useState(true)
     const [answer, setAnswer] = useState([])
+    const [styleAnswer, setStyleAnswer] = useState([])
     const survey = useSelector(state => state.survey)
     const { dataAssignment, assignment, } = useSelector(state => state.survey)
     const navigate = useNavigate()
@@ -27,15 +27,16 @@ const Assignment = () => {
         }))
         setAnswer([])
     }
-    // console.log(survey)
+
     const handleCheck = (index) => {
 
-        if (index == (assignment.survey.questions.length - 1)) {
+        if (index === (assignment.survey.questions.length - 1)) {
             setEnd(false)
         } else {
             !end && setEnd(true)
         }
     }
+
     const handleSubmit = () => {
         const value = {
             data: [...dataAssignment],
@@ -48,7 +49,7 @@ const Assignment = () => {
     const callbackFunction = (childData) => {
         let arr = []
         const newArr = answer.some((el) => {
-            return el.choice_id == childData.choice_id
+            return el.choice_id === childData.choice_id
         })
         if (newArr) {
             arr = answer.filter((el) => {
@@ -59,22 +60,30 @@ const Assignment = () => {
             arr = [...answer, childData]
         }
         setAnswer(arr)
+        setStyleAnswer(arr)
     }
-
     if (survey.loading) {
         return <Loading />
     } else
         return (
-            <Container>
+            <Box sx={{ backgroundImage: "url('./assets/image/background-login.png')", backgroundSize: '100% 100vh', backgroundRepeat: 'no-repeat', minHeight: '100vh' }} padding='0 80px'>
                 <Box >
-                    <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{ minHeight: '100vh !important' }} onRealIndexChange={({ activeIndex }) => handleCheck(activeIndex)}>
+                    <Swiper
+                        navigation={true} modules={[Navigation]}
+                        className="mySwiper"
+                        style={{ minHeight: '100vh !important' }}
+                        onRealIndexChange={(item) => {
+                            handleCheck(item.activeIndex)
+
+                        }}
+                    >
                         {survey.assignment && survey.assignment.survey.questions.map((el) => {
                             return <SwiperSlide key={el.id} style={{ display: 'flex', width: '100%' }}>
                                 <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '120px' }}>
                                     <Typography variant='h2' mb={5}>{el.name}</Typography> <br />
-                                    <ListAnswer answerProps={el} propsData={callbackFunction} colorAnswer={answer} />
-                                    <Box marginTop={30} marginBottom='15px'>
-                                        <Button className='btn-assignment' disabled={end} onClick={handleSubmit}>Submit</Button>
+                                    <ListAnswer answerProps={el} propsData={callbackFunction} colorAnswer={styleAnswer} />
+                                    <Box marginTop={5} marginBottom='15px' className='btn-contain'>
+                                        <Button className='btn-assignment' onClick={handleSubmit}>Submit</Button>
                                         <Button className='btn-assignment' onClick={() => handleSave(el.id)}>Save</Button>
                                     </Box>
                                 </Box>
@@ -82,7 +91,7 @@ const Assignment = () => {
                         })}
                     </Swiper>
                 </Box>
-            </Container>
+            </Box>
         )
 }
 

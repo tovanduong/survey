@@ -1,17 +1,11 @@
 import { Box } from "@mui/material";
-import { Form, Formik } from "formik";
+import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
-import { getCategory, getDiff, getQuestion, postQuestion } from "../../../common/API/adminAPI";
+import { getCategory, getDiff, postQuestion } from "../../../common/API/adminAPI";
 import FormPostQuestion from "./formPostQuestion";
 import "./question.css";
 
-const SignupSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(3, "Too Short!")
-    .max(10, "Too Long!")
-    .required("Required"),
-});
 const initialValues = {
   category: '',
   difficult: "",
@@ -68,7 +62,6 @@ const Question = () => {
             <FormPostQuestion propsCate={category} propsDiff={diff} />
           )}
         </Formik>
-        {/* <Answer /> */}
       </Box>
     </div>
   );

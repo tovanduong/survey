@@ -208,3 +208,22 @@ export function EditSurvey(id, { value }) {
         .catch((err) => err
         );
 }
+
+
+export function getAssignment() {
+    return axiosClient.get('/assignment')
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => err
+        );
+}
+
+export function delAssignment(id) {
+    return axiosClient.delete(`/assignment/${id}`)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => err
+        );
+}

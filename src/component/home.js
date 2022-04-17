@@ -1,10 +1,9 @@
 
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import React, { useEffect } from 'react'
 import { makeStyles } from '@mui/styles';
 import { Box } from '@mui/system';
-import { Cookie } from '@mui/icons-material';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
@@ -18,7 +17,6 @@ const useStyles = makeStyles({
 })
 const Home = () => {
     const classes = useStyles()
-    const { data } = useSelector((state) => state.login.data)
     let navigate = useNavigate()
 
     useEffect(() => {

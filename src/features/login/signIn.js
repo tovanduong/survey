@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import InputField from '../../common/fieldForm/fieldForm';
 import './login.css';
-import { fetchLogin } from './loginSlice';
+import { fetchLogin, lock } from './loginSlice';
 import { useStyles } from './muiStyle';
 
 export const SignupSchema = Yup.object().shape({
@@ -29,6 +29,7 @@ const Login = () => {
   useEffect(() => {
     localStorage.setItem('datauser', JSON.stringify(data))
     if (Object.values(data).length !== 0) {
+      dispatch(lock(false))
       if (data.role == 'user') {
         navigate('/survey')
       }
@@ -46,8 +47,10 @@ const Login = () => {
           password: '',
         }}
         validationSchema={SignupSchema}
-        onSubmit={value =>
+        onSubmit={value => {
           dispatch(fetchLogin(value))
+          dispatch(lock(false))
+        }
         }
       >
         {() => {

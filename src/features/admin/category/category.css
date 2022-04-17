@@ -8,14 +8,15 @@
     justify-content: space-between;
     padding: 10px 10%;
 }
+
 .cateForm {
     width: 40%;
 }
+
 .cateList {
     width: 40%;
   
 }
-
 
 .Box__modal {
     position: absolute;

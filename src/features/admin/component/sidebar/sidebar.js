@@ -1,14 +1,13 @@
 import {
-    AppstoreOutlined, CarryOutOutlined, MailOutlined,
-    MenuFoldOutlined,
-    MenuUnfoldOutlined, QuestionCircleOutlined,
+    AppstoreOutlined, CarryOutOutlined, MailOutlined, QuestionCircleOutlined,
     UserOutlined
 } from "@ant-design/icons";
 import { Box } from "@mui/material";
-import { Button, Divider, Menu, Switch } from "antd";
+import { Divider, Menu, Switch } from "antd";
 import "antd/dist/antd.css";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { NavLink, Route, Routes } from "react-router-dom";
+import AssignmentContainer from "../../assigment/assignmentContainer";
 import Category from "../../category/category";
 import Difficult from "../../difficult/difficult";
 import Question from "../../question/question";
@@ -20,10 +19,8 @@ import Topbar from "../topbar/topbar";
 import "./sidebar.css";
 
 const Sidebar = () => {
-    const [collapsed, setCollapsed] = useState(false);
     const [mode, setMode] = useState("inline");
     const [theme, setTheme] = useState("dark");
-    const [current, setCurrent] = useState(1)
     const changeMode = (value) => {
         setMode(value ? "vertical" : "inline");
     };
@@ -31,9 +28,7 @@ const Sidebar = () => {
     const changeTheme = (value) => {
         setTheme(value ? "light" : "dark");
     };
-    const toggleCollapsed = () => {
-        setCollapsed(!collapsed);
-    };
+
     const nodeRef = React.useRef(null);
     const { SubMenu } = Menu;
     return (
@@ -80,6 +75,11 @@ const Sidebar = () => {
                             <NavLink to="/admin/user">List User</NavLink>
                         </Menu.Item>
                     </SubMenu>
+                    <SubMenu key="sub8" icon={<AppstoreOutlined />} title="Assignment">
+                        <Menu.Item key="8">
+                            <NavLink to="/admin/assignment">Assignment</NavLink>
+                        </Menu.Item>
+                    </SubMenu>
                 </Menu>
             </Box>
             <Box className="sidebar-right">
@@ -92,6 +92,7 @@ const Sidebar = () => {
                     <Route path="category" element={<Category />} />
                     <Route path="difficult" element={<Difficult />} />
                     <Route path="user" element={<User />} />
+                    <Route path="assignment" element={<AssignmentContainer />} />
                 </Routes>
             </Box>
         </Box>

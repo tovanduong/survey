@@ -6,7 +6,6 @@ const InputFieldSurvey = (props) => {
   const { errors, touched } = form;
   const { name } = field;
   const showError = errors[name] && touched[name];
-  // const classes = useStyles()
   return (
     <>
       <FormControl className="FormInput">

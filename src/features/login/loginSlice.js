@@ -6,7 +6,8 @@ const initialState = {
   status: 'idle',
   errorMessage: '',
   data: {},
-  isLogin: false
+  isLogin: false,
+  locklogin: false
 };
 
 export const fetchLogin = createAsyncThunk(
@@ -30,6 +31,13 @@ export const fecthLogout = createAsyncThunk(
 export const loginSilce = createSlice({
   name: 'login',
   initialState,
+
+  reducers: {
+    lock: (state, action) => {
+      state.locklogin = action.payload
+    },
+  },
+
   extraReducers: {
     [fetchLogin.pending]: (state) => {
       state.status = 'loading';
@@ -53,5 +61,7 @@ export const loginSilce = createSlice({
     },
   },
 });
+
+export const { lock } = loginSilce.actions;
 
 export default loginSilce.reducer;

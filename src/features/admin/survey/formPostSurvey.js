@@ -1,7 +1,7 @@
 import AddIcon from "@mui/icons-material/Add";
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
-import { Field, FieldArray, Form, useField } from "formik";
+import { Field, Form } from "formik";
 import React from "react";
 import InputFieldSurvey from "./InputField/InputFieldSurvey";
 import SelectFieldSurvey from "./InputField/SelectFieldSurvey";

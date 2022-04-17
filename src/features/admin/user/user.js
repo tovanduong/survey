@@ -56,7 +56,7 @@ const User = () => {
                     size="medium"
                     style={{ width: '100%', margin: '10px', color: '#000', border: 'none', boxShadow: 'none' }}
                 >
-                    <EditIcon />
+                    <EditIcon sx={{ color: '#FFF' }} />
                 </Button>
             ),
         },
@@ -70,7 +70,7 @@ const User = () => {
                     size='large'
                     style={{ width: '80%', margin: '10px', color: '#000', border: 'none', boxShadow: 'none' }}
                 >
-                    <DeleteIcon />
+                    <DeleteIcon sx={{ color: '#FFF' }} />
                 </Button>
 
             ),

@@ -22,8 +22,6 @@ const Category = () => {
 
     const handleOpen = (params) => {
         setOpen(true)
-        // console.log(params.id)
-        // const paraId = params.id
         setPara(params)
     };
     const handleClose = () => setOpen(false);
@@ -64,7 +62,7 @@ const Category = () => {
                     style={{ width: '100%', margin: '10px', color: '#000', border: 'none', boxShadow: 'none' }}
                     onClick={() => handleOpen(params)}
                 >
-                    <EditIcon />
+                    <EditIcon sx={{ color: '#FFF' }} />
                 </Button>
             ),
         },
@@ -79,12 +77,11 @@ const Category = () => {
                     style={{ width: '80%', margin: '10px', color: '#000', border: 'none', boxShadow: 'none' }}
                     onClick={() => handleDel(params)}
                 >
-                    <DeleteIcon />
+                    <DeleteIcon sx={{ color: '#FFF' }} />
                 </Button>
 
             ),
         },
-
     ];
 
     return (
@@ -141,7 +138,7 @@ const Category = () => {
                         >
                             {() => {
                                 return (
-                                    <FormPostCate />
+                                    <FormPostCate propsCate={para} />
                                 )
                             }}
                         </Formik>
@@ -156,7 +153,6 @@ const Category = () => {
                         rowsPerPageOptions={[10]}
                         experimentalFeatures={{ newEditingApi: true }}
                         checkboxSelection
-
                     />
                 </Box>
             </Box>

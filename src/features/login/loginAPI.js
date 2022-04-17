@@ -1,5 +1,4 @@
 import axiosClient from '../../common/API/axiosClient';
-import swal from 'sweetalert';
 
 export function postLogin({ password, username }) {
     return axiosClient.post('/auth/login', {
@@ -7,7 +6,6 @@ export function postLogin({ password, username }) {
         username
     })
         .then(res => {
-            // const { user, tokens } = res
             localStorage.setItem('accesstoken', 'login')
             return res.data
         })

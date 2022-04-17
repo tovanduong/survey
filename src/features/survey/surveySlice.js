@@ -94,7 +94,11 @@ export const surveySlice = createSlice({
     [fetchGetSurveyOfCate.fulfilled]: (state, action) => {
       state.surveyOfCate = action.payload;
     },
+    [fetchPostSubmit.pending]: (state, action) => {
+      state.loading = true;
+    },
     [fetchPostSubmit.fulfilled]: (state, action) => {
+      state.loading = false;
       state.assignmentSubmit = action.payload;
     },
   },

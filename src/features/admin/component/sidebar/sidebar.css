@@ -25,7 +25,6 @@
 
 .sidebar-right {
     width: calc(100% - 256px);
-    /* background-color: #eaeff1; */
     border-radius: 8px;
     padding: 10px;
     color: black;

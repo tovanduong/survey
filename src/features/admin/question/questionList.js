@@ -43,7 +43,6 @@ const QuestionList = () => {
             })
             setQuestion(newQuestion)
         })
-
     }
     const columns = [
         {
@@ -64,7 +63,7 @@ const QuestionList = () => {
                     style={{ width: '100%', margin: '10px', color: '#000', border: 'none', boxShadow: 'none' }}
                     onClick={() => handleOpen(params)}
                 >
-                    <EditIcon />
+                    <EditIcon sx={{ color: '#FFF' }} />
                 </Button>
             ),
         },
@@ -79,7 +78,7 @@ const QuestionList = () => {
                     style={{ width: '80%', margin: '10px', color: '#000', border: 'none', boxShadow: 'none' }}
                     onClick={() => handleDel(params)}
                 >
-                    <DeleteIcon />
+                    <DeleteIcon sx={{ color: '#FFF' }} />
                 </Button>
 
             ),
@@ -87,7 +86,7 @@ const QuestionList = () => {
 
     ];
     return (
-        <div>
+        <Box>
             <Box style={{ height: 650, width: '100%' }} >
                 <Modal
                     keepMounted
@@ -155,7 +154,7 @@ const QuestionList = () => {
 
                 />
             </Box>
-        </div>
+        </Box>
     )
 }
 

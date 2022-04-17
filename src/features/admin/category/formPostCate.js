@@ -1,13 +1,14 @@
 
 import AddIcon from '@mui/icons-material/Add';
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { FastField, Form } from 'formik'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import InputFieldCategory from './InputFieldCategory'
 
-const FormPostCate = () => {
+const FormPostCate = ({ propsCate }) => {
+
     return (
-        <div>
+        <Box>
             <Form >
                 <FastField
                     name="name"
@@ -18,7 +19,7 @@ const FormPostCate = () => {
                 />
                 <Button style={{ width: '100px', height: '50px', marginTop: '20px' }} type='submit'><AddIcon /></Button>
             </Form>
-        </div>
+        </Box>
     )
 }
 

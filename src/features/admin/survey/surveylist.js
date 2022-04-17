@@ -1,16 +1,12 @@
-
-
-
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { Box, Button, Modal } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { Box, Button, Modal, Typography } from '@mui/material';
-import * as Yup from 'yup';
-import React, { useEffect, useState } from 'react'
-import { delQuestion, delSurvey, EditQuestion, EditSurvey, getCategory, getDiff, getQuestion, getSurvey } from '../../../common/API/adminAPI'
 import { Formik } from 'formik';
+import React, { useEffect, useState } from 'react';
+import * as Yup from 'yup';
+import { delSurvey, EditSurvey, getCategory, getDiff, getQuestion, getSurvey } from '../../../common/API/adminAPI';
 import FormPostSurvey from './formPostSurvey';
-
 
 const SignupSchema = Yup.object().shape({
     name: Yup.string()
@@ -20,6 +16,7 @@ const SignupSchema = Yup.object().shape({
 const SurveyList = () => {
     const [category, setCategory] = useState([]);
     const [diff, setDiff] = useState([]);
+    const [question, setQuestion] = useState([]);
     const [survey, setSurvey] = useState([])
     const [open, setOpen] = useState(false);
     const [para, setPara] = useState({})
@@ -31,9 +28,16 @@ const SurveyList = () => {
         getDiff().then((datadiff) => setDiff(datadiff));
     }, []);
     useEffect(() => {
+        getQuestion().then((dataQuestion) => setQuestion(dataQuestion));
+    }, []);
+    useEffect(() => {
         getSurvey().then(dataSurvey => setSurvey(dataSurvey))
     }, [])
-
+    const handleClose = () => setOpen(false);
+    const handleOpen = (params) => {
+        setOpen(true)
+        setPara(params)
+    };
     const handleDel = (params) => {
         delSurvey(params.id)
         setTimeout(() => {
@@ -44,6 +48,7 @@ const SurveyList = () => {
         })
 
     }
+
     const columns = [
         {
             field: 'name',
@@ -61,9 +66,9 @@ const SurveyList = () => {
                     color="primary"
                     size="medium"
                     style={{ width: '100%', margin: '10px', color: '#000', border: 'none', boxShadow: 'none' }}
-                // onClick={() => handleOpen(params)}
+                    onClick={() => handleOpen(params)}
                 >
-                    <EditIcon />
+                    <EditIcon sx={{ color: '#FFF' }} />
                 </Button>
             ),
         },
@@ -78,23 +83,22 @@ const SurveyList = () => {
                     style={{ width: '80%', margin: '10px', color: '#000', border: 'none', boxShadow: 'none' }}
                     onClick={() => handleDel(params)}
                 >
-                    <DeleteIcon />
+                    <DeleteIcon sx={{ color: '#FFF' }} />
                 </Button>
 
             ),
         },
-
     ];
-    // const initialValues = {
-    //     category: '',
-    //     difficulty: "",
-    //     name: '',
-    //     questions: []
-    // };
+    const initialValues = {
+        category: '',
+        difficulty: "",
+        name: '',
+        questions: []
+    }
     return (
         <div>
             <Box style={{ height: 650, width: '100%' }} >
-                {/* <Modal
+                <Modal
                     keepMounted
                     open={open}
                     onClose={handleClose}
@@ -104,30 +108,22 @@ const SurveyList = () => {
                             initialValues={initialValues}
                             validationSchema={SignupSchema}
                             onSubmit={(value, { resetForm }) => {
-                                // EditSurvey(para.id, { value }).then(data => {
-                                //     console.log(data)
-                                //     const removeOldSurvey = survey.filter((item) => {
-                                //         return item.id !== para.id
-                                //     })
-                                //     removeOldSurvey.push(data)
-                                //     console.log(removeOldSurvey)
-                                //     setSurvey(removeOldSurvey)
-                                // })
-                                // resetForm({ value: '' })
-                                // setOpen(false)
-                                console.log(value)
+                                EditSurvey(para.id, { value }).then(data => {
+                                    console.log(data)
+
+                                })
+                                setOpen(false)
                             }
                             }
                         >
                             {() => {
                                 return (
-                                    <FormPostSurvey propsCate={category} propsDiff={diff} propPara={para} />
+                                    <FormPostSurvey propsCate={category} propsDiff={diff} propsQuestion={question} />
                                 )
                             }}
                         </Formik>
                     </Box>
-                </Modal> */}
-
+                </Modal>
                 <DataGrid
                     rows={survey}
                     columns={columns}
@@ -136,7 +132,6 @@ const SurveyList = () => {
                     rowsPerPageOptions={[10]}
                     experimentalFeatures={{ newEditingApi: true }}
                     checkboxSelection
-
                 />
             </Box>
         </div>
